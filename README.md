@@ -34,12 +34,12 @@ Explore theMyboard experience:
 
 This is a production-ready frontend project demonstrating a clean and modern Kanban workflow.
 
-🧪 Demo Mode
+## 🧪 Demo Mode
 The board loads with sample tasks by default so you can instantly see how the Kanban workflow operates.
 
 Feel free to move, edit, or delete the demo tasks to experiment with the interface and understand the workflow.
 
-Key Features
+## Key Features
 Kanban Board Workflow
 Tasks are organized across three workflow stages:
 
@@ -48,7 +48,7 @@ In Progress
 Done
 Users can move tasks between columns using drag and drop interactions.
 
-Task Management
+## Task Management
 
 Create new tasks
 Edit existing tasks
@@ -56,7 +56,7 @@ Delete tasks
 Assign task priority levels
 Priority Labels
 
-Tasks support priority tags:
+## Tasks support priority tags:
 
 Urgent
 High
@@ -64,7 +64,7 @@ Medium
 Low
 These help visually organize important work.
 
-Search & Filtering
+## Search & Filtering
 
 Users can:
 
@@ -82,7 +82,7 @@ Progress Indicator
 
 A dynamic progress bar displays the percentage of completed tasks, giving users quick visual feedback on workflow progress.
 
-Responsive Design
+***Responsive Design***
 
 FlowBoard adapts seamlessly across:
 
