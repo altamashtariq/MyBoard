@@ -32,57 +32,8 @@ export default function App() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) return JSON.parse(saved);
     
-    // Showcase tasks for GDG submission (matching reference screenshot style)
-    return [
-      {
-        id: '1',
-        title: 'Improve mobile responsiveness',
-        description: 'Ensure the Kanban board layout works smoothly on smaller screens',
-        status: 'todo',
-        priority: 'medium',
-        createdAt: Date.now() - 3600000
-      },
-      {
-        id: '2',
-        title: 'Implement drag and drop interaction',
-        description: 'Allow tasks to move between Todo, In Progress, and Done columns',
-        status: 'in-progress',
-        priority: 'urgent',
-        createdAt: Date.now() - 7200000
-      },
-      {
-        id: '3',
-        title: 'Setup React + Vite project',
-        description: 'Initialize project structure and configure the development environment',
-        status: 'done',
-        priority: 'low',
-        createdAt: Date.now() - 86400000
-      },
-      {
-        id: '4',
-        title: 'Add dark/light theme toggle',
-        description: 'Implement a theme switcher that persists in local storage',
-        status: 'done',
-        priority: 'medium',
-        createdAt: Date.now() - 172800000
-      },
-      {
-        id: '5',
-        title: 'Implement search and filter',
-        description: 'Add functionality to search tasks and filter by priority',
-        status: 'in-progress',
-        priority: 'high',
-        createdAt: Date.now() - 10800000
-      },
-      {
-        id: '6',
-        title: 'Final project submission',
-        description: 'Submit the completed Kanban board project for GDG evaluation',
-        status: 'todo',
-        priority: 'high',
-        createdAt: Date.now()
-      }
-    ];
+    // Start with an empty board
+    return [];
   });
   
   const [isDarkMode, setIsDarkMode] = useState(() => {
