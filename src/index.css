@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Enable class-based dark mode for Tailwind 4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply bg-zinc-50 text-zinc-900 antialiased transition-colors duration-300;
+  }
+
+  .bg-texture {
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .dark .bg-texture {
+    background-image: none;
+  }
+}

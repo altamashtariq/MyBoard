@@ -1,0 +1,5 @@
+{
+  "name": "Kanban Flow",
+  "description": "A professional Kanban task management application with drag-and-drop, persistence, and priority tracking.",
+  "requestFramePermissions": []
+}
