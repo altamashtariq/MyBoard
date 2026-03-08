@@ -1,4 +1,4 @@
-<img width="414" height="848" alt="My board for gdg" src="https://github.com/user-attachments/assets/74028c27-1e1f-47d9-8409-f68571051358" /># MyBoard - Fully Functional Kanban Task Management App
+
 
 # MyBoard - Kanban Flow 🚀
 
@@ -101,21 +101,22 @@ Build a clean and responsive productivity interface
 FlowBoard represents a production-quality frontend project similar to task management tools used in real development workflows.
 ## Preview 📷
 
-### Main Board UI
-![Main UI](src/screenshots/ui.png)
+## 📸 Screenshots
 
-### Dark Mode UI
-![Dark Mode](src/screenshots/uiindarkmode.png)
+### Main Board UI
+![Board UI](src/screenshots/ui.png)
+
+### Dark Mode
+![Dark Mode](src/screenshots/ui%20in%20dark%20mode.png)
+
+### Task Example
+![Task](src/screenshots/task.png)
 
 ### Mark Task as Done
-![Task Complete](src/screenshots/markasdonefeature.png)
+![Mark Done](src/screenshots/mark%20as%20done%20feature.png)
 
-### Task Card Example
-![Task Card](src/screenshots/task.png)
-
-### Mobile ui
-![Mobile ui](src/screenshots/Myboardforgdg.png)
-
+### Mobile UI
+![Mobile UI](src/screenshots/My%20board%20for%20gdg.png)
 
 
 ## Author
