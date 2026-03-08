@@ -2,16 +2,17 @@ import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Task } from '../types';
-import { GripVertical, Trash2, Edit2 } from 'lucide-react';
+import { GripVertical, Trash2, Edit2, CheckCircle2 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 interface TaskCardProps {
   task: Task;
   onEdit: (task: Task) => void;
   onDelete: (id: string) => void;
+  onComplete: (id: string) => void;
 }
 
-export const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete }) => {
+export const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete, onComplete }) => {
   const {
     attributes,
     listeners,
@@ -82,6 +83,15 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete }) =>
               {task.title}
             </h3>
             <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+              {task.status !== 'done' && (
+                <button 
+                  onClick={() => onComplete(task.id)}
+                  className="p-1.5 text-emerald-500 hover:text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 rounded-lg transition-all"
+                  title="Mark as Done"
+                >
+                  <CheckCircle2 className="w-4 h-4" />
+                </button>
+              )}
               <button 
                 onClick={() => onEdit(task)}
                 className="p-1.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-all"

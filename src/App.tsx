@@ -32,8 +32,8 @@ export default function App() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) return JSON.parse(saved);
     
-   
-     return [
+    // Initial tasks
+    return [
       {
         id: '1',
         title: 'evening walk',
@@ -204,6 +204,10 @@ export default function App() {
     setTasks(prev => prev.filter(t => t.id !== id));
   };
 
+  const completeTask = (id: string) => {
+    setTasks(prev => prev.map(t => t.id === id ? { ...t, status: 'done' } : t));
+  };
+
   const handleSaveTask = (taskData: Partial<Task>) => {
     if (editingTask) {
       setTasks(prev => prev.map(t => t.id === editingTask.id ? { ...t, ...taskData } : t));
@@ -245,47 +249,10 @@ export default function App() {
               className="w-8 h-8 object-contain"
               referrerPolicy="no-referrer"
             />
-            <div className="flex flex-col -space-y-1 hidden sm:block">
+            <div className="flex flex-col -space-y-1">
               <h1 className="text-lg font-bold tracking-tight dark:text-white">MyBoard</h1>
               <p className="text-[10px] font-medium text-zinc-400 uppercase tracking-widest">by altamash</p>
             </div>
-          </div>
-
-          {/* Stats Summary */}
-          <div className="hidden md:flex items-center gap-6 bg-zinc-100 dark:bg-zinc-800/50 px-6 py-2 rounded-full border border-zinc-200 dark:border-zinc-800">
-            <button 
-              onClick={() => setActiveStatusFilter(activeStatusFilter === 'todo' ? 'all' : 'todo')}
-              className={cn(
-                "flex items-center gap-2 transition-opacity hover:opacity-70",
-                activeStatusFilter !== 'all' && activeStatusFilter !== 'todo' && "opacity-30"
-              )}
-            >
-              <div className="w-2 h-2 rounded-full bg-zinc-400" />
-              <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">{stats.todo}</span>
-              <span className="text-xs text-zinc-500">To do</span>
-            </button>
-            <button 
-              onClick={() => setActiveStatusFilter(activeStatusFilter === 'in-progress' ? 'all' : 'in-progress')}
-              className={cn(
-                "flex items-center gap-2 transition-opacity hover:opacity-70",
-                activeStatusFilter !== 'all' && activeStatusFilter !== 'in-progress' && "opacity-30"
-              )}
-            >
-              <div className="w-2 h-2 rounded-full bg-blue-500" />
-              <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">{stats.inProgress}</span>
-              <span className="text-xs text-zinc-500">In progress</span>
-            </button>
-            <button 
-              onClick={() => setActiveStatusFilter(activeStatusFilter === 'done' ? 'all' : 'done')}
-              className={cn(
-                "flex items-center gap-2 transition-opacity hover:opacity-70",
-                activeStatusFilter !== 'all' && activeStatusFilter !== 'done' && "opacity-30"
-              )}
-            >
-              <div className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">{stats.done}</span>
-              <span className="text-xs text-zinc-500">Done</span>
-            </button>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
@@ -312,6 +279,52 @@ export default function App() {
           
           {/* Progress and Filters Section */}
           <div className="space-y-6">
+            {/* Stats Summary - Responsive Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-white dark:bg-zinc-900 p-4 rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
+              <button 
+                onClick={() => setActiveStatusFilter(activeStatusFilter === 'todo' ? 'all' : 'todo')}
+                className={cn(
+                  "flex items-center justify-between p-3 rounded-2xl transition-all",
+                  activeStatusFilter === 'todo' ? "bg-zinc-100 dark:bg-zinc-800" : "hover:bg-zinc-50 dark:hover:bg-zinc-800/50",
+                  activeStatusFilter !== 'all' && activeStatusFilter !== 'todo' && "opacity-40"
+                )}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-zinc-400" />
+                  <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">To do</span>
+                </div>
+                <span className="text-sm font-bold text-zinc-900 dark:text-white">{stats.todo}</span>
+              </button>
+              <button 
+                onClick={() => setActiveStatusFilter(activeStatusFilter === 'in-progress' ? 'all' : 'in-progress')}
+                className={cn(
+                  "flex items-center justify-between p-3 rounded-2xl transition-all",
+                  activeStatusFilter === 'in-progress' ? "bg-blue-50 dark:bg-blue-900/20" : "hover:bg-blue-50/50 dark:hover:bg-blue-900/10",
+                  activeStatusFilter !== 'all' && activeStatusFilter !== 'in-progress' && "opacity-40"
+                )}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-blue-500" />
+                  <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">In progress</span>
+                </div>
+                <span className="text-sm font-bold text-zinc-900 dark:text-white">{stats.inProgress}</span>
+              </button>
+              <button 
+                onClick={() => setActiveStatusFilter(activeStatusFilter === 'done' ? 'all' : 'done')}
+                className={cn(
+                  "flex items-center justify-between p-3 rounded-2xl transition-all",
+                  activeStatusFilter === 'done' ? "bg-emerald-50 dark:bg-emerald-900/20" : "hover:bg-emerald-50/50 dark:hover:bg-emerald-900/10",
+                  activeStatusFilter !== 'all' && activeStatusFilter !== 'done' && "opacity-40"
+                )}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-emerald-500" />
+                  <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Done</span>
+                </div>
+                <span className="text-sm font-bold text-zinc-900 dark:text-white">{stats.done}</span>
+              </button>
+            </div>
+
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex-1 max-w-md space-y-2">
                 <div className="flex items-center justify-between text-xs font-bold">
@@ -391,16 +404,18 @@ export default function App() {
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
           >
-            <div className="flex gap-6 h-full min-h-[calc(100vh-12rem)]">
+            <div className="flex flex-col lg:flex-row gap-6 h-full min-h-[calc(100vh-12rem)] pb-8">
               {COLUMNS.map((col) => (
-                <KanbanColumn
-                  key={col.id}
-                  column={col}
-                  tasks={filteredTasks.filter(t => t.status === col.id)}
-                  onAddTask={addTask}
-                  onEditTask={editTask}
-                  onDeleteTask={deleteTask}
-                />
+                <div key={col.id} className="flex-1 min-w-0 lg:min-w-[350px] h-full">
+                  <KanbanColumn
+                    column={col}
+                    tasks={filteredTasks.filter(t => t.status === col.id)}
+                    onAddTask={addTask}
+                    onEditTask={editTask}
+                    onDeleteTask={deleteTask}
+                    onCompleteTask={completeTask}
+                  />
+                </div>
               ))}
             </div>
 
@@ -411,6 +426,7 @@ export default function App() {
                     task={activeTask} 
                     onEdit={() => {}} 
                     onDelete={() => {}} 
+                    onComplete={() => {}}
                   />
                 </div>
               ) : null}

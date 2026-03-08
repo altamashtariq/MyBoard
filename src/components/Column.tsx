@@ -12,9 +12,10 @@ interface KanbanColumnProps {
   onAddTask: (status: Task['status']) => void;
   onEditTask: (task: Task) => void;
   onDeleteTask: (id: string) => void;
+  onCompleteTask: (id: string) => void;
 }
 
-export const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, tasks, onAddTask, onEditTask, onDeleteTask }) => {
+export const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, tasks, onAddTask, onEditTask, onDeleteTask, onCompleteTask }) => {
   const { setNodeRef } = useDroppable({
     id: column.id,
   });
@@ -41,7 +42,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, tasks, onAdd
 
   return (
     <div className={cn(
-      "flex flex-col w-full min-w-[320px] max-w-[450px] h-full rounded-3xl border transition-colors",
+      "flex flex-col w-full h-full rounded-3xl border transition-colors",
       style.bg,
       style.accent
     )}>
@@ -72,6 +73,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, tasks, onAdd
               task={task} 
               onEdit={onEditTask}
               onDelete={onDeleteTask}
+              onComplete={onCompleteTask}
             />
           ))}
         </SortableContext>
