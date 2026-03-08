@@ -30,7 +30,7 @@ A modern, high-performance Kanban board built for productivity and seamless task
 
 Explore theMyboard experience:
 
-🔗 https://myboardsite.netlify.app/
+🔗 https://myboardd.vercel.app
 
 This is a production-ready frontend project demonstrating a clean and modern Kanban workflow.
 
