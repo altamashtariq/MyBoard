@@ -32,8 +32,41 @@ export default function App() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) return JSON.parse(saved);
     
-    // Start with an empty board
-    return [];
+   
+     return [
+      {
+        id: '1',
+        title: 'evening walk',
+        description: 'Take a relaxing walk in the evening',
+        status: 'todo',
+        priority: 'low',
+        createdAt: Date.now()
+      },
+      {
+        id: '2',
+        title: 'code submission',
+        description: 'Submit the final project code',
+        status: 'todo',
+        priority: 'high',
+        createdAt: Date.now()
+      },
+      {
+        id: '3',
+        title: 'gym',
+        description: 'Daily workout session',
+        status: 'in-progress',
+        priority: 'medium',
+        createdAt: Date.now()
+      },
+      {
+        id: '4',
+        title: 'gdg submission',
+        description: 'Final submission for GDG',
+        status: 'done',
+        priority: 'urgent',
+        createdAt: Date.now()
+      }
+    ];
   });
   
   const [isDarkMode, setIsDarkMode] = useState(() => {
